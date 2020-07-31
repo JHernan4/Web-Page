@@ -1,0 +1,57 @@
+{ "peliculas":
+  [
+    { "id" : 1,
+      "titulo" : "Torrente, el brazo tonto de la ley",
+      "año" : 1998,
+      "portada":"static/imagenes/torrente.jpg",
+      "genero" : "humor",
+      "descripcion": "Un ex policía le pide ayuda a un amigo al descubrir a una banda de narcotraficantes que opera en un restaurante chino.",
+      "precio" : 23.99
+    },
+    {
+        "id" : 2,
+        "titulo" : "Torrente, misión en Marbella",
+        "año" : 2001,
+        "portada":"static/imagenes/torrente2.jpg",
+        "genero" : "humor",
+        "descripcion" : "Un ex policía decide montar una agencia de investigación al mismo tiempo que intenta recuperar su sitio en la sociedad.",
+        "precio":24.99
+    },
+    {
+      "id" : 3,
+      "titulo" : "Torrente, el protector",
+      "año" : 2005,
+      "portada":"static/imagenes/torrente3.jpg",
+      "genero" : "humor",
+      "descripcion":"Giannina Ricci es una popular eurodiputada que viene de visita a España para cerrar las fábricas de la multinacional Petronosa porque ponen en peligro el medio ambiente. El jefe de la compañía soborna a dos de los encargados de seguridad de la eurodiputada para que puedan ayudarle a planear un ataque contra ella. José Luis Torrente, probablemente uno de los peores policías del mundo, es el encargado de proteger a Ricci.",
+      "precio":25.99
+    },
+    {
+      "id" : 4,
+      "titulo" : "Torrente, Letal Crisis",
+      "año" : 2011,
+      "portada":"static/imagenes/torrente4.jpg",
+      "genero" : "humor",
+      "descripcion":"Tras varios intentos fallidos de llevar una vida digna, Torrente decide aceptar un peligroso encargo que le hace un viejo conocido. Esto le lleva a afrontar uno de los momentos mas críticos de su carrera cuando le acusan injustamente de un crimen que no ha cometido. Pero esta dispuesto a vengarse de los malhechores que lo engañaron.",
+      "precio":26.99
+    },
+    {
+      "id" : 5,
+      "titulo" : "Torrente, Mision Eurovegas",
+      "año" : 2015,
+      "portada":"static/imagenes/torrente5.jpg",
+      "genero" : "humor",
+      "descripcion":"Torrente sale de la cárcel en el año 2018 para encontrarse una España totalmente diferente de la que él conocía. Ante este 'shock' decide pasar a ser un 'fuera de la ley' y atracar un casino. Gracias a su red de contactos de la cárcel logra localizar a John Marshall, el responsable de la planificación de la seguridad del mayor casino de Eurovegas. Marshall le dice que lo más importante es contar con un equipo de especialistas y Torrente se dispone a encontrarlos entre sus conocidos.",
+      "precio":27.99
+    },
+    {
+      "id" : 6,
+      "titulo" : "Bienvenido, Mister Marshall",
+      "año" : 2015,
+      "portada":"static/imagenes/marshall.jpg",
+      "genero" : "española",
+      "descripcion":"Villar del Río es un pequeño y tranquilo pueblo en el que nunca pasa nada. Sin embargo, el mismo día en que llega la cantante folclórica Carmen Vargas, el alcalde recibe la noticia de la inminente visita de un comité del Plan Marshall. La noticia provoca un gran revuelo entre los vecinos que quieren impresionar y ofrecer a los americanos un recibimiento muy especial.",
+      "precio":35.99
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My personal Web</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/style.css') }}/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  </head>
+  <body>
+    {% block content %}
+    <div class='top'>
+    <h1>Video-Films Web Project</h1>
+    <div class="right">
+      <a href="{{ url_for('index') }}"><img src="../static/imagenes/back.png" alt="shop" style="width:18px;height:18px">Vol</a>
+    </div>
+    </div>
+    <form class="" action="index.html" method="post">
+      <div class="main">
+        <div class="centrado">
+          <h1>Búsqueda por genero</h1>
+          <select name="genero">
+             <option value="Accion">Accion</option>
+             <option value="Humor">Humor</option>
+             <option value="Cine Español">Cine Español</option>
+             <option value="Comedia">Comedia</option>
+             <option value="Miedo">Miedo</option>
+             <option value="Comedia Romántica">Comedia Romántica</option>
+          </select>
+          <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> </a>
+          <br>
+          <h1>Búsqueda por titulo</h1>
+          <input type="search" name="titulo" value="">
+          <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> </a>
+        </div>
+      </div>
+    </form>
+
+    <div class="foot">
+    <h1>By Jorge Hernán</h1>
+    </div>
+    {% endblock %}
+  </body>
+</html>

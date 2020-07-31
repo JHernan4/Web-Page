@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Personal Web</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/style.css') }}/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  </head>
+  <body>
+    {% block content %}
+    <div class='top'>
+    <h1>Video-Films Web Project</h1>
+    <div class="right">
+      <a href="{{ url_for('index') }}"><img src="../static/imagenes/back.png" alt="shop" style="width:18px;height:18px">Vol</a>
+    </div>
+    </div>
+    <div class="main">
+      <form class="" action="index.html" method="post">
+      <div class="row">
+        <div class="column">
+          <h1>Nombre</h1>
+          <input type="text" name="name" value="">
+          <br>
+          <h1>Nombre de Usuario</h1>
+          <input type="text" name="username" value="">
+        </div>
+        <div class="column">
+          <h1>Apellido 1</h1>
+          <input type="text" name="surname1" value="">
+          <br>
+          <h1>Apellido 2</h1>
+          <input type="text" name="surname2" value="">
+        </div>
+        <div class="column">
+          <h1>Edad</h1>
+          <input type="text" name="edad" value="">
+          <h1>E-mail</h1>
+          <input type="text" name="mail" value="">
+        </div>
+          <br>
+          <br>
+      </div>
+      </form>
+      <br>
+      <div class="centrado">
+          <button type="submit" name="button">Entrar</button>
+      </div>
+    </div>
+    <div class="foot">
+    <h1>By Jorge Hernán</h1>
+    </div>
+    {% endblock %}
+  </body>
+</html>

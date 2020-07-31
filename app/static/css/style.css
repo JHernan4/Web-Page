@@ -1,0 +1,110 @@
+.top {
+  top: 0;
+  position: sticky;
+  position: -webkit-sticky;
+  overflow: hidden;
+  height: 100px;
+  width: 100%;
+  background-color: #565555;
+}
+
+.top h1{
+  text-align: center;
+  color: #7AF5F9;
+  font-family: "Alegreya Sans";
+}
+
+.column{
+  width: 33.33%;
+  float: none;
+}
+
+.main {
+    -ms-flex: 80%;
+    flex: 80%;
+    background-color: #7AF5F9;
+    padding: 20px;
+}
+
+.foot{
+  overflow: hidden;
+  height: 100px;
+  width: 100%;
+  background-color: #565555;
+}
+
+.foot h1{
+  color: #7AF5F9;
+  text-align: center;
+  font-family: "Alegreya Sans";
+}
+
+.titulo{
+  font-family: "Sofia";
+}
+
+.column h2{
+  font-family: "Sofia";
+}
+
+.column p{
+  font-family: "Alegreya Sans";
+  text-align: center;
+  font-size: 20px;
+}
+
+.menu{
+  width: 20%;
+  float:left;
+  background-color: #7AF5F9;
+
+}
+
+.menu h1{
+  font-family: "Alegreya Sans";
+  text-align: center;
+  color:#565555
+}
+.menu a{
+  font-family: "Alegreya Sans";
+  text-align: center;
+  color:#565555;
+  font-size: 25px;
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.row h1{
+  font-family: "Alegreya Sans";
+  text-align: center;
+  color:#565555
+  font-size: 25px;
+}
+
+.centrado{
+  text-align: center;
+}
+
+.centrado h1{
+  font-family: "Alegreya Sans";
+  text-align: center;
+  color:#565555
+  font-size: 25px;
+}
+
+.right{
+  float: right;
+}
+
+.right a{
+  font-family: "Alegreya Sans";
+  text-align: center;
+  color:#565555;
+  font-size: 20px;
+}

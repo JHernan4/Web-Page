@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My personal Web</title>
+      <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/style.css') }}/>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya Sans">
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  </head>
+
+<body>
+  {% block content %}
+<div class='top'>
+<h1>Video-Films Web Project</h1>
+</div>
+<div class="main">
+  <div class="menu">
+    <h1>Menu Principal</h1>
+    <a href="{{ url_for('index') }}"><img src="../static/imagenes/home.png" alt="shop" style="width:18px;height:18px"> Inicio </a>
+    <br>
+    <a href="{{ url_for('login') }}"><img src="../static/imagenes/login.png" alt="shop" style="width:18px;height:18px"> Entrar </a>
+    <br>
+    <a href="{{ url_for('Sign_up') }}"><img src="../static/imagenes/register.png" alt="shop" style="width:18px;height:18px"> Registrarse </a>
+    <br>
+      <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> Buscar </a>
+  </div>
+  <div class="row">
+    {% for item in catalogo %}
+    <div class="column">
+      <form class="" action="{{ url_for('description') }}" method="post">
+        <input type="image" name="" value="pelicula" src="{{item.portada}}"  style="width: 200px; height:300px">
+        <h2>{{item.titulo}}</h2>
+        <input type="hidden" name="{{item.titulo}}" value="{{item.titulo}}">
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+  </div>
+
+<div class="foot">
+<h1>By Jorge Hernán</h1>
+</div>
+{% endblock %}
+</body>
+</html>
