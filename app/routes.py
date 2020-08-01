@@ -24,10 +24,7 @@ peliculas = catalogue['peliculas']
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
-    cata = []
-    for c, t in zip(database.caratulas(), database.titulos()):
-        cata.append((c, t))
-    print (cata)
+    cata = database.main()
 
     return render_template("index.html", catalogo=cata, registrado=0)
 
@@ -49,3 +46,18 @@ def login():
 @app.route("/search", methods=['GET', 'POST'])
 def search():
     return render_template("search.html")
+
+
+@app.route("/result", methods=['GET', 'POST'])
+def result():
+    genero = request.form['genero']
+    titulo = request.form['titulo']
+    print(titulo)
+    if genero != "" and titulo == "":
+        peliculas = database.busquedaPorGenero(genero)
+    elif genero == "" and titulo != "":
+        peliculas = database.busquedaPorTitulo(titulo)
+    else:
+        peliculas = database.busquedaHibrida(genero, titulo)
+
+    return render_template("result.html", resultado=peliculas, genero=genero, titulo=titulo)

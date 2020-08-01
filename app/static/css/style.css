@@ -97,6 +97,10 @@
   color:#565555
   font-size: 25px;
 }
+.centrado h2{
+  font-family: "Alegreya Sans";
+  text-align: center;
+}
 
 .right{
   float: right;

@@ -27,13 +27,13 @@ def db_exceptiondbconn(db_conn):
         return None
 
 
-def caratulas():
+def main():
     try:
         # CONEXION
         db_conn = db_engine.connect()
 
         # QUERY
-        query = "select caratula from peliculas limit 10"
+        query = "select caratula, title from peliculas limit 10"
 
         # EJECUTAR QUERY
         db_result = db_conn.execute(query)
@@ -43,7 +43,7 @@ def caratulas():
 
         peliculas = []
         for element in db_result:
-            peliculas.append(element[0])
+            peliculas.append(element)
 
         # DEVOLVER
         if len(peliculas) == 0:
@@ -55,33 +55,6 @@ def caratulas():
     except:
         return db_exceptiondbconn(db_conn)
 
-def titulos():
-        try:
-            # CONEXION
-            db_conn = db_engine.connect()
-
-            # QUERY
-            query = "select title from peliculas limit 10"
-
-            # EJECUTAR QUERY
-            db_result = db_conn.execute(query)
-
-            # DESCONEXION
-            db_conn.close()
-
-            peliculas = []
-            for element in db_result:
-                peliculas.append(element[0])
-
-            # DEVOLVER
-            if len(peliculas) == 0:
-                return None
-            else:
-                return peliculas
-
-        # EXCEPCION BASE DE DATOS
-        except:
-            return db_exceptiondbconn(db_conn)
 
 def description(pelicula):
 
@@ -107,6 +80,82 @@ def description(pelicula):
                 return None
             else:
                 return peliculas
+
+        # EXCEPCION BASE DE DATOS
+        except:
+            return db_exceptiondbconn(db_conn)
+
+
+def busquedaPorGenero(genero):
+
+            try:
+                # CONEXION
+                db_conn = db_engine.connect()
+
+                # QUERY
+                query = "select title, caratula from peliculas where genero = '{}'".format(genero)
+
+                # EJECUTAR QUERY
+                db_result = db_conn.execute(query)
+
+                # DESCONEXION
+                db_conn.close()
+
+                peliculas = []
+                for element in db_result:
+                    peliculas.append(element)
+
+                # DEVOLVER
+                if len(peliculas) == 0:
+                    return None
+                else:
+                    return peliculas
+
+            # EXCEPCION BASE DE DATOS
+            except:
+                return db_exceptiondbconn(db_conn)
+
+def busquedaPorTitulo(titulo):
+        try:
+            # CONEXION
+            db_conn = db_engine.connect()
+            # QUERY
+            query = "select title, caratula from peliculas where title = '{}'".format(titulo)
+            # EJECUTAR QUERY
+            db_result = db_conn.execute(query)
+            # DESCONEXION
+            db_conn.close()
+            peliculas = []
+            for element in db_result:
+                peliculas.append(element)
+            # DEVOLVER
+                if len(peliculas) == 0:
+                    return None
+                else:
+                    return peliculas
+
+        # EXCEPCION BASE DE DATOS
+        except:
+            return db_exceptiondbconn(db_conn)
+
+def busquedaHibrida(genero, titulo):
+        try:
+            # CONEXION
+            db_conn = db_engine.connect()
+            # QUERY
+            query = "select title, caratula from peliculas where title = '{}' and genero ='{}'".format(titulo, genero)
+            # EJECUTAR QUERY
+            db_result = db_conn.execute(query)
+            # DESCONEXION
+            db_conn.close()
+            peliculas = []
+            for element in db_result:
+                peliculas.append(element)
+            # DEVOLVER
+                if len(peliculas) == 0:
+                    return None
+                else:
+                    return peliculas
 
         # EXCEPCION BASE DE DATOS
         except:

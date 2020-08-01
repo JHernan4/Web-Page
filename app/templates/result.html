@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My personal Web</title>
+    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/style.css') }}/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  </head>
+  <body>
+    {% block content %}
+    <div class='top'>
+    <h1>Video-Films Web Project</h1>
+    <div class="right">
+      <a href="{{ url_for('search') }}"><img src="../static/imagenes/back.png" alt="shop" style="width:18px;height:18px">Vol</a>
+    </div>
+  </div>
+  <div class="main">
+    <div class="centrado">
+      <h1>Resultados de la búsqueda</h1>
+      <h2>Búsqueda por: {{genero}} {{titulo}}</h2>
+    </div>
+    <div class="row">
+      {% for item in resultado %}
+      <div class="column">
+        <form class="" action="{{ url_for('description') }}" method="post">
+          <input type="image" name="" value="pelicula" src="{{item[1]}}"  style="width: 200px; height:300px">
+          <h2>{{item[0]}}</h2>
+          <input type="hidden" name="{{item[0]}}" value="{{item[0]}}">
+        </form>
+      </div>
+      {% endfor %}
+    </div>
+    </div>
+
+    {% endblock %}
+
+  </body>
+</html>

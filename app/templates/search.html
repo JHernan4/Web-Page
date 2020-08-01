@@ -15,11 +15,12 @@
       <a href="{{ url_for('index') }}"><img src="../static/imagenes/back.png" alt="shop" style="width:18px;height:18px">Vol</a>
     </div>
     </div>
-    <form class="" action="index.html" method="post">
       <div class="main">
         <div class="centrado">
+          <form class="" action="{{ url_for('result') }}" method="post">
           <h1>Búsqueda por genero</h1>
           <select name="genero">
+            <option value="">...</option>
              <option value="Accion">Accion</option>
              <option value="Humor">Humor</option>
              <option value="Cine Español">Cine Español</option>
@@ -27,14 +28,14 @@
              <option value="Miedo">Miedo</option>
              <option value="Comedia Romántica">Comedia Romántica</option>
           </select>
-          <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> </a>
+          <input type="image" name="" src= "../static/imagenes/search.png" value="" style="width:18px;height:18px">
           <br>
           <h1>Búsqueda por titulo</h1>
           <input type="search" name="titulo" value="">
-          <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> </a>
+          <input type="image" name="" src= "../static/imagenes/search.png" value="" style="width:18px;height:18px">
+        </form>
         </div>
       </div>
-    </form>
 
     <div class="foot">
     <h1>By Jorge Hernán</h1>
