@@ -25,15 +25,16 @@
       </div>
       <div class="row">
         <div class="column">
-          <img src="{{pelicula.portada}}" alt="pelicula" style="width: 200px; height:300px">
+          <h1>{{pelicula[1]}}</h1>
+          <img src="{{pelicula[0]}}" alt="pelicula" style="width: 200px; height:300px">
         </div>
         <div class="column">
           <h1>Sinopsis</h1>
-          <p>{{pelicula.descripcion}}</p>
+          <p>{{pelicula[2]}}</p>
         </div>
         <div class="column">
           <h1>Precio</h1>
-          <p>{{pelicula.precio}}€</p>
+          <p>{{pelicula[3]}}€</p>
           {% if registrado == 1 %}
           <button type="button" name="button">Añadir al carrito</button>
           {% endif %}
