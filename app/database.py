@@ -195,8 +195,25 @@ def sign (username, password, name, surname1, surname2, age, email, phone):
                 return False
             else:
                 query = "insert into usuarios (username, password, name, surname1, surname2, age, email, phone) values ('{}', '{}', '{}', '{}', '{}', {}, '{}', '{}')".format(username, password, name, surname1, surname2, age, email, phone)
+                print(query)
                 db_result = db_conn.execute(query)
                 db_conn.close()
                 return True
+        except:
+            return db_exceptiondbconn(db_conn)
+
+
+#metodo GETTER para obtener informacion del usuario
+
+def getInfo(username):
+        try:
+            db_conn = db_engine.connect()
+            if existeUsuario(username)==True:
+                return None
+            else:
+                query = "select username, name, surname1, surname2, age, email, phone, account, salary from usuarios where username = '{}'".format(username)
+                db_result = db_conn.execute(query)
+                db_conn.close()
+                return list(db_result)
         except:
             return db_exceptiondbconn(db_conn)

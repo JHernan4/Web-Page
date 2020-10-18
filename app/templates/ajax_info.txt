@@ -1,0 +1,2 @@
+<input type="text" name="salary" value="">
+<input type="submit" name="boton" value="Add Credit Card" onclick="update()">

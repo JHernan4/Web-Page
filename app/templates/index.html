@@ -12,24 +12,29 @@
   {% block content %}
 <div class='top'>
 <h1>Video-Films Web Project</h1>
+{% if user %}
+<h3>Bienvenido {{user}}</h3>
+{% endif %}
 </div>
 <div class="main">
   <div class="menu">
     <h1>Menu Principal</h1>
     {% if registrado == 0 %}
-    <a href="{{ url_for('index') }}"><img src="../static/imagenes/home.png" alt="shop" style="width:18px;height:18px"> Inicio </a>
+    <a href="{{ url_for('index') }}"><img src="../static/imagenes/home.png" alt="shop" style="width:18px;height:18px"> Home </a>
     <br>
-    <a href="{{ url_for('login') }}"><img src="../static/imagenes/login.png" alt="shop" style="width:18px;height:18px"> Entrar </a>
+    <a href="{{ url_for('login') }}"><img src="../static/imagenes/login.png" alt="shop" style="width:18px;height:18px"> Sign In </a>
     <br>
-    <a href="{{ url_for('Sign_up') }}"><img src="../static/imagenes/register.png" alt="shop" style="width:18px;height:18px"> Registrarse </a>
+    <a href="{{ url_for('Sign_up') }}"><img src="../static/imagenes/register.png" alt="shop" style="width:18px;height:18px"> Sign Up </a>
     <br>
-      <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> Buscar </a>
+      <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> Search </a>
     {% else %}
-    <a href="{{ url_for('index') }}"><img src="../static/imagenes/home.png" alt="shop" style="width:18px;height:18px"> Perfil </a>
+    <a href="{{ url_for('index') }}"><img src="../static/imagenes/home.png" alt="shop" style="width:18px;height:18px"> Home </a>
     <br>
-    <a href="{{ url_for('login') }}"><img src="../static/imagenes/login.png" alt="shop" style="width:18px;height:18px"> Cerrar Sesión </a>
+    <a href="{{ url_for('Sign_out') }}"><img src="../static/imagenes/login.png" alt="shop" style="width:18px;height:18px"> Sign out </a>
     <br>
-      <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> Buscar </a>
+      <a href="{{ url_for('search') }}"><img src="../static/imagenes/search.png" alt="shop" style="width:18px;height:18px"> Search </a>
+    <br>
+      <a href="{{ url_for('Profile') }}"><img src="../static/imagenes/settings.png" alt="shop" style="width:18px;height:18px"> Profile </a>
     {% endif %}
   </div>
   <div class="row">

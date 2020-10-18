@@ -20,12 +20,12 @@ from app import database
 def index():
     cata = database.main()
 
-    return render_template("index.html", catalogo=cata, registrado=0)
+    return render_template("index.html", catalogo=cata, registrado=session['login'])
 
 @app.route("/description", methods=['GET', 'POST'])
 def description():
     pelicula = database.description(list(request.form)[2])
-    return render_template("description.html", pelicula=pelicula, registrado = 0)
+    return render_template("description.html", pelicula=pelicula, registrado = session['login'])
 
 
 @app.route('/Sign_up', methods=['GET', 'POST'])
@@ -39,26 +39,56 @@ def Sign_up():
         age = request.form["age"]
         email = request.form["mail"]
         phone = request.form['phone']
-        if database.sign(username, password, name, surname1, surname2, age, email, phone) == False:
-            return render_template("sign.html", mensajeError="Error al registrar. Revise sus datos")
+        hash = hashlib.sha256()
+        aux =  hash.update(str.encode(password))
+        secure_password = hashlib.sha256(str.encode(password)).hexdigest()
 
-        return render_template("index.html", catalogo=database.main(), registrado=1)
+
+        if database.sign(username, str(secure_password), name, surname1, surname2, age, email, phone) == False:
+            return render_template("sign.html", mensajeError="Error al registrar. Revise sus datos")
+        #implementation of session storage
+        session['username'] = username
+        session['compra'] = []
+        session['login'] = 1
+        session.modified = True
+        return render_template("index.html", catalogo=database.main(), registrado=session['login'], user = session['username'])
     else:
         return render_template("sign.html")
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
+    regexname = "^[a-zA-Z0-9_.-]+$"
+    lastusercookie = request.cookies.get('lastuser')
     if 'username' in request.form:
         username = request.form['username']
-        password = request.form['password']
+        password = hashlib.sha256(str.encode(request.form['password'])).hexdigest()
 
-        if database.login(username, password) == False:
+        if database.login(username, str(password)) == False:
             return render_template("login.html", mensajeError="Error to sign in. Please review username and/or password")
 
-        return render_template("index.html", catalogo=database.main(), registrado=1)
+        session['username'] = username
+        session['compra'] = []
+        session['login'] = 1
+        return render_template("index.html", catalogo=database.main(), registrado=session['login'], user = session['username'])
     else:
         return render_template("login.html")
+@app.route("/Sign_out", methods=['GET', 'POST'])
+def Sign_out():
+    session['username'] = None
+    session["compra"] = []
+    session["login"] = 0
+    return redirect(url_for('index'))
+
+
+@app.route("/Profile", methods=['GET', 'POST'])
+def Profile():
+    if session['username']:
+        info = database.getInfo(session['username'])
+        print(info)
+        return render_template("profile.html", info = info)
+
+
 
 @app.route("/search", methods=['GET', 'POST'])
 def search():
@@ -78,3 +108,6 @@ def result():
         peliculas = database.busquedaHibrida(genero, titulo)
 
     return render_template("result.html", resultado=peliculas, genero=genero, titulo=titulo)
+@app.route("/ajax_info", methods=['GET', 'POST'])
+def ajax_info():
+    return render_template("ajax_info.txt")

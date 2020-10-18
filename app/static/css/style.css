@@ -14,9 +14,21 @@
   font-family: "Alegreya Sans";
 }
 
+.top h3{
+  text-align: left;
+  color: #78F820;
+  font-family: "Alegreya Sans";
+}
+
 .column{
   width: 33.33%;
   float: none;
+}
+
+.column h3{
+  font-family: "Alegreya Sans";
+  text-align: center;
+  color:#565555
 }
 
 .main {
