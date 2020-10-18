@@ -15,12 +15,6 @@ from datetime import datetime
 from flask import Flask, session, make_response
 from app import database
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-USERS_DIR = os.path.join(BASE_DIR + "/app/", "usuarios")
-catalogue_data = open(os.path.join(app.root_path, 'catalogue/catalogue.json'), encoding="utf-8").read()
-catalogue = json.loads(catalogue_data)
-peliculas = catalogue['peliculas']
-
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
@@ -36,12 +30,35 @@ def description():
 
 @app.route('/Sign_up', methods=['GET', 'POST'])
 def Sign_up():
-    return render_template("sign.html")
+    if 'name' in request.form:
+        name = request.form['name']
+        password = request.form['password']
+        username = request.form["username"]
+        surname1 = request.form["surname1"]
+        surname2 = request.form["surname2"]
+        age = request.form["age"]
+        email = request.form["mail"]
+        phone = request.form['phone']
+        if database.sign(username, password, name, surname1, surname2, age, email, phone) == False:
+            return render_template("sign.html", mensajeError="Error al registrar. Revise sus datos")
+
+        return render_template("index.html", catalogo=database.main(), registrado=1)
+    else:
+        return render_template("sign.html")
 
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    return render_template("login.html")
+    if 'username' in request.form:
+        username = request.form['username']
+        password = request.form['password']
+
+        if database.login(username, password) == False:
+            return render_template("login.html", mensajeError="Error to sign in. Please review username and/or password")
+
+        return render_template("index.html", catalogo=database.main(), registrado=1)
+    else:
+        return render_template("login.html")
 
 @app.route("/search", methods=['GET', 'POST'])
 def search():
@@ -52,7 +69,7 @@ def search():
 def result():
     genero = request.form['genero']
     titulo = request.form['titulo']
-    print(titulo)
+    print(genero)
     if genero != "" and titulo == "":
         peliculas = database.busquedaPorGenero(genero)
     elif genero == "" and titulo != "":

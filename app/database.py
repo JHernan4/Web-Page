@@ -160,3 +160,43 @@ def busquedaHibrida(genero, titulo):
         # EXCEPCION BASE DE DATOS
         except:
             return db_exceptiondbconn(db_conn)
+
+def login(username, password):
+    try:
+        db_conn = db_engine.connect()
+        query = "select username from usuarios where username = '{}' and password = '{}'".format(username, password)
+        db_result = db_conn.execute(query)
+        db_conn.close()
+        if len(list(db_result)) == 1:
+            return True
+        else:
+            return False
+    except:
+        return db_exceptiondbconn(db_conn)
+
+
+def existeUsuario(username):
+        try:
+            db_conn = db_engine.connect()
+            query = "select username from usuarios where username = '{}'".format(username)
+            db_result = db_conn.execute(query)
+            db_conn.close()
+            if len(list(db_result)) == 0:
+                return True
+            else:
+                return False
+        except:
+            return db_exceptiondbconn(db_conn)
+
+def sign (username, password, name, surname1, surname2, age, email, phone):
+        try:
+            db_conn = db_engine.connect()
+            if existeUsuario(username)==False:
+                return False
+            else:
+                query = "insert into usuarios (username, password, name, surname1, surname2, age, email, phone) values ('{}', '{}', '{}', '{}', '{}', {}, '{}', '{}')".format(username, password, name, surname1, surname2, age, email, phone)
+                db_result = db_conn.execute(query)
+                db_conn.close()
+                return True
+        except:
+            return db_exceptiondbconn(db_conn)

@@ -10,7 +10,7 @@
 
 .top h1{
   text-align: center;
-  color: #7AF5F9;
+  color: #78F820;
   font-family: "Alegreya Sans";
 }
 
@@ -22,7 +22,7 @@
 .main {
     -ms-flex: 80%;
     flex: 80%;
-    background-color: #7AF5F9;
+    background-color: #78F820;
     padding: 20px;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .foot h1{
-  color: #7AF5F9;
+  color: #78F820;
   text-align: center;
   font-family: "Alegreya Sans";
 }
@@ -45,18 +45,27 @@
 
 .column h2{
   font-family: "Sofia";
+  color: #565555;
 }
 
 .column p{
   font-family: "Alegreya Sans";
   text-align: center;
   font-size: 20px;
+  color: #565555;
+}
+
+.column h1{
+  font-family: "Alegreya Sans";
+  text-align: center;
+  font-size: 25px;
+  color: #565555;
 }
 
 .menu{
   width: 20%;
   float:left;
-  background-color: #7AF5F9;
+  background-color: #78F820;
 
 }
 
@@ -94,12 +103,13 @@
 .centrado h1{
   font-family: "Alegreya Sans";
   text-align: center;
-  color:#565555
+  color:#565555;
   font-size: 25px;
 }
 .centrado h2{
   font-family: "Alegreya Sans";
   text-align: center;
+  color:#565555;
 }
 
 .right{

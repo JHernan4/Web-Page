@@ -16,7 +16,7 @@
     </div>
     </div>
     <div class="main">
-      <form class="" action="index.html" method="post">
+      <form class="" action="{{ url_for('Sign_up') }}" method="post">
       <div class="row">
         <div class="column">
           <h1>Nombre</h1>
@@ -24,6 +24,9 @@
           <br>
           <h1>Nombre de Usuario</h1>
           <input type="text" name="username" value="">
+          <br>
+          <h1>Contraseña</h1>
+          <input type="password" name="password" value="">
         </div>
         <div class="column">
           <h1>Apellido 1</h1>
@@ -31,21 +34,27 @@
           <br>
           <h1>Apellido 2</h1>
           <input type="text" name="surname2" value="">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <input type="submit" name="boton" value="Sign Up">
         </div>
         <div class="column">
           <h1>Edad</h1>
-          <input type="text" name="edad" value="">
+          <input type="text" name="age" value="">
           <h1>E-mail</h1>
           <input type="text" name="mail" value="">
+          <br>
+          <h1>Móvil</h1>
+          <input type="text" name="phone" value="">
         </div>
           <br>
           <br>
       </div>
       </form>
-      <br>
-      <div class="centrado">
-          <button type="submit" name="button">Entrar</button>
-      </div>
+
     </div>
     <div class="foot">
     <h1>By Jorge Hernán</h1>
