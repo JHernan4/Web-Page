@@ -6,6 +6,9 @@
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/style.css') }}/>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alegreya Sans">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="static/js/validation.js"></script>
+ ></script>
   </head>
   <body>
     {% block content %}
@@ -16,17 +19,17 @@
     </div>
     </div>
     <div class="main">
-      <form class="" action="{{ url_for('Sign_up') }}" method="post">
+      <form class="" action="{{ url_for('Sign_up') }}" method="post" id="registrator">
       <div class="row">
         <div class="column">
           <h1>Nombre</h1>
           <input type="text" name="name" value="">
           <br>
           <h1>Nombre de Usuario</h1>
-          <input type="text" name="username" value="">
+          <input id="username"type="text" name="username" value="">
           <br>
           <h1>Contraseña</h1>
-          <input type="password" name="password" value="">
+          <input id="password" type="password" name="password" value="">
         </div>
         <div class="column">
           <h1>Apellido 1</h1>
@@ -38,14 +41,15 @@
           <br>
           <br>
           <br>
+          <button type="button" id="enviar" name="button" onclick="main()">Sign Up</button>
           <br>
-          <input type="submit" name="boton" value="Sign Up">
+          <h1 id="error"></h1>
         </div>
         <div class="column">
           <h1>Edad</h1>
           <input type="text" name="age" value="">
           <h1>E-mail</h1>
-          <input type="text" name="mail" value="">
+          <input type="text" id="email" name="mail" value="">
           <br>
           <h1>Móvil</h1>
           <input type="text" name="phone" value="">

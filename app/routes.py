@@ -19,8 +19,10 @@ from app import database
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     cata = database.main()
-
-    return render_template("index.html", catalogo=cata, registrado=session['login'])
+    if not 'login' in session:
+        return render_template("index.html", catalogo=cata, registrado=0)
+    else:
+        return render_template("index.html", catalogo=cata, registrado=session['login'])
 
 @app.route("/description", methods=['GET', 'POST'])
 def description():
@@ -75,18 +77,20 @@ def login():
         return render_template("login.html")
 @app.route("/Sign_out", methods=['GET', 'POST'])
 def Sign_out():
-    session['username'] = None
-    session["compra"] = []
-    session["login"] = 0
-    return redirect(url_for('index'))
+    if 'username' in session:
+        session.pop("username")
+        session["compra"] = []
+        session.pop("login")
+        return redirect(url_for('index'))
 
 
 @app.route("/Profile", methods=['GET', 'POST'])
 def Profile():
-    if session['username']:
+    if 'username' in session:
+        print("Voy a pedir info de {}".format(session['username']))
         info = database.getInfo(session['username'])
         print(info)
-        return render_template("profile.html", info = info)
+        return render_template("profile.html", info = info, user=info[0][0])
 
 
 
@@ -108,6 +112,13 @@ def result():
         peliculas = database.busquedaHibrida(genero, titulo)
 
     return render_template("result.html", resultado=peliculas, genero=genero, titulo=titulo)
-@app.route("/ajax_info", methods=['GET', 'POST'])
-def ajax_info():
-    return render_template("ajax_info.txt")
+@app.route("/update", methods=['GET', 'POST'])
+def update():
+    if database.update(request.args.get('u'), request.args.get('a')) == True:
+        return "OK"
+
+@app.route("/add_money", methods=['GET', 'POST'])
+def add_money():
+    info = database.add_money(request.args.get('u'), request.args.get('m'))
+    res = "<h3>Salary: "+str(info)+"€</h3>"
+    return res

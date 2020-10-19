@@ -206,14 +206,43 @@ def sign (username, password, name, surname1, surname2, age, email, phone):
 #metodo GETTER para obtener informacion del usuario
 
 def getInfo(username):
+        print("Entro en getInfo")
+        try:
+            result = []
+            db_conn = db_engine.connect()
+            query = "select username, name, surname1, surname2, age, email, phone, account, salary from usuarios where username = '{}'".format(username)
+            print("ejecuto: {}",format(query))
+            db_result = db_conn.execute(query)
+            for element in list(db_result):
+                result.append(element)
+            db_conn.close()
+            print("devuelvo: {}".format(result))
+            return result
+        except:
+            return db_exceptiondbconn(db_conn)
+
+def update(user, account):
         try:
             db_conn = db_engine.connect()
-            if existeUsuario(username)==True:
-                return None
-            else:
-                query = "select username, name, surname1, surname2, age, email, phone, account, salary from usuarios where username = '{}'".format(username)
-                db_result = db_conn.execute(query)
-                db_conn.close()
-                return list(db_result)
+            query = "update usuarios set account = '{} ' where username = '{}'".format(account, user)
+            print(query)
+            db_result = db_conn.execute(query)
+            db_conn.close()
+            return True
+        except:
+            return db_exceptiondbconn(db_conn)
+
+
+def add_money(user, money):
+        try:
+            db_conn = db_engine.connect()
+            query = "update usuarios set salary = salary+{} where username = '{}'".format(money, user)
+            db_result = db_conn.execute(query)
+            query = "select username, salary from usuarios where username = '{}'".format(user)
+            db_result = db_conn.execute(query)
+            for element in list(db_result):
+                salario_actual=element[1]
+            db_conn.close()
+            return salario_actual
         except:
             return db_exceptiondbconn(db_conn)

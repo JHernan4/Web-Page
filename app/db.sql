@@ -15,7 +15,7 @@ CREATE TABLE peliculas(
 CREATE TABLE usuarios(
   id INTEGER NOT NULL DEFAULT nextval('user_id_seq'),
   username VARCHAR (50) NOT NULL,
-  password VARCHAR (50) NOT NULL,
+  password VARCHAR (100000) NOT NULL,
   name VARCHAR (50) NOT NULL,
   surname1 VARCHAR(50) NOT NULL,
   surname2 VARCHAR(50) NOT NULL,
@@ -23,7 +23,7 @@ CREATE TABLE usuarios(
   email VARCHAR (50) NOT NULL,
   phone VARCHAR (25) NOT NULL,
   account VARCHAR (16),
-  salary DOUBLE,
+  salary int default 0,
   CONSTRAINT user_pkey PRIMARY KEY (id)
 )
 

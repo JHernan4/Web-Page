@@ -8,17 +8,57 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 </head>
 <script>
-function update() {
+function update(user) {
+  if (user == "") {
+  document.getElementById("txtHint").innerHTML = "";
+  return;
+}
+  var account = document.getElementById("account").value
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
-      document.getElementById("hidden1").innerHTML =
-      this.responseText;
+      document.getElementById("title1").innerHTML="Add money to your account"
+      document.getElementById("hidden1").innerHTML= "Credit card: "+ account
+      document.getElementById("hidden2").innerHTML= "Salary : 0€"
+      document.getElementById("hi")
+      var sp1 = document.createElement("button");
+      sp1.setAttribute("id", "boton3");
+      sp1.setAttribute("type", "button");
+      sp1.setAttribute("value", "{{user}}");
+      sp1.setAttribute("onclick", "add_money(this.value)");
+      sp1.setAttribute("name", "button");
+      var sp2 = document.getElementById("boton2")
+      var parent = sp2.parentNode;
+      parent.replaceChild(sp1, sp2)
+      document.getElementById("boton3").innerHTML = "Add Money"
+
+      var spp1 = document.createElement("input");
+      spp1.setAttribute("id", "money");
+      spp1.setAttribute("type", "text");
+      spp1.setAttribute("value", "");
+      spp1.setAttribute("name", "money");
+      var spp2 = document.getElementById("account")
+      var pparent = spp2.parentNode;
+      pparent.replaceChild(spp1, spp2)
     }
   };
-  xhttp.open("GET", "ajax_info", true);
+  xhttp.open("GET", "update?u="+user+"&a="+account, true);
   xhttp.send();
 }
+
+function add_money(user) {
+  var money = document.getElementById("money").value
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("hidden2").innerHTML= "Salary : xxx€"
+    }
+  };
+  xhttp.open("GET", "add_money?u="+user+"&m="+money, true);
+  xhttp.send();
+}
+
+
 </script>
 
   <body>
@@ -48,6 +88,7 @@ function update() {
           <a href="{{ url_for('Profile') }}"><img src="../static/imagenes/settings.png" alt="shop" style="width:18px;height:18px"> Profile </a>
         {% endif %}
       </div>
+      {% if info %}
       <div class="row">
         <div class="column">
           <h3>Username: {{info[0][0]}}</h3>
@@ -68,18 +109,24 @@ function update() {
         <div class="column">
           {% if info[0][7] %}
           <h1>Add money to your account</h1>
-          <h3>Credit Card: </h3>
-          <h3>Salary: </h3>
-            <input type="text" name="salary" value="">
-            <input type="submit" name="boton" value="Add Money">
+          <h3 id="card">Credit Card: {{info[0][7]}}</h3>
+          {% if info[0][8] %}
+          <h3>Salary: {{info[0][8]}}€</h3>
           {% else %}
-          <h1>Add a credit car for buy films/series</h1>
-            <input type="text" name="salary" value="">
-            <input type="submit" name="boton" value="Add Credit Card" onclick="update()">
+          <h3 id="hidden2">Salary : 0€</h3>
+          {% endif %}
+            <input type="text" name="salary" value="" id="money">
+            <button type="button" name="button", value="{{user}}"onclick="add_money(this.value)" id=boton>Add Money</button>
+          {% else %}
+          <h1 id="title1">Add a credit car for buy films/series</h1>
+            <input type="text" id="account" value="">
+            <button type="button" name="button", value="{{user}}"onclick="update(this.value)" id=boton2>Add a credit card</button>
           <h3 id="hidden1"> </h3>
+          <h3 id="hidden2"> </h3>
           {% endif %}
         </div>
       </div>
+      {% endif %}
     </div>
     <div class="foot">
     <h1>By Jorge Hernán</h1>
