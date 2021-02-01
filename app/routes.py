@@ -27,7 +27,11 @@ def index():
 @app.route("/description", methods=['GET', 'POST'])
 def description():
     pelicula = database.description(list(request.form)[2])
-    return render_template("description.html", pelicula=pelicula, registrado = session['login'])
+    if not 'login' in session:
+        return render_template("description.html", pelicula=pelicula, registrado = 0)
+    else:
+        return render_template("description.html", pelicula=pelicula, registrado = session['login'])
+
 
 
 @app.route('/Sign_up', methods=['GET', 'POST'])

@@ -1,5 +1,4 @@
 function main(){
-  alert("JAVA")
   var vUName = checkUsername();
   var vMail = checkEmail();
   var vPass = checkPassword();
@@ -47,13 +46,13 @@ function checkEmail(){
 
 function checkPassword(){
   var regexpass = /^[A-Za-z]\w{7,14}$/;
-  var elem = $("#password")
-  var password = elem.val()
-  if(password == "" || !!regexpass.test(password)){
-    elem.css("borderColor", "red")
+  var elem = document.getElementById("password")
+  var password = elem.value
+  if(password == "" || !regexpass.test(password)){
+    elem.style.borderColor="red";
     return false;
   }else{
-    elem.css("borderColor", "green")
+    elem.style.borderColor="green";
     return true;
   }
 }

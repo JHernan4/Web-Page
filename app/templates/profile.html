@@ -42,7 +42,7 @@ function update(user) {
       pparent.replaceChild(spp1, spp2)
     }
   };
-  xhttp.open("GET", "update?u="+user+"&a="+account, true);
+  xhttp.open("POST", "update?u="+user+"&a="+account, true);
   xhttp.send();
 }
 

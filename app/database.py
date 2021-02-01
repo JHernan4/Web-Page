@@ -11,9 +11,9 @@ TAX_CONSTANT = 15
 CARRITO_STR = "Carrito"
 
 # configurar el motor de sqlalchemy
-db_engine = create_engine(
-    "postgresql://alumnodb:alumnodb@localhost/webfilm", echo=False)
+db_engine = create_engine("postgresql://postgres:postgres@localhost/webfilm", echo=False)
 db_meta = MetaData(bind=db_engine)
+
 
 
 def db_exceptiondbconn(db_conn):
